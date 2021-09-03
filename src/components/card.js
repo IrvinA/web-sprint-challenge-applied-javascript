@@ -54,16 +54,46 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
   const appendPoint = document.querySelector(`${selector}`);
-  axios.get('http://localhost:5000/api/articles')
+  const axios = require('axios');
+  const config = {
+    method: 'get',
+    url: 'http://localhost:5000/api/articles',
+    headers: { }
+  };
+  axios(config)
     .then(resp => {
-      const data = resp.articles;
-      const innerData = data.javascript;
-      innerData.forEach(item => {
-        const post = Card(item);
-        appendPoint.appendChild(post);
-      })
-    });
-  return appendPoint; 
+      const data = resp.data;
+      const innerData = data.articles;
+      const javascript = innerData.javascript;
+      const bootstrap = innerData.bootstrap;
+      const technology = innerData.technology;
+      const jquery = innerData.jquery;
+      const node = innerData.node;
+
+      javascript.forEach(item => {
+        const tab = Card(item);
+        appendPoint.appendChild(tab);
+      });
+      bootstrap.forEach(item => {
+        const tab = Card(item);
+        appendPoint.appendChild(tab);
+      });
+      technology.forEach(item => {
+        const tab = Card(item);
+        appendPoint.appendChild(tab);
+      });
+      jquery.forEach(item => {
+        const tab = Card(item);
+        appendPoint.appendChild(tab);
+      });
+      node.forEach(item => {
+        const tab = Card(item);
+        appendPoint.appendChild(tab);
+      });
+    })
+    .catch(err => console.log(err))
+
+    return appendPoint;
 }
 
 export { Card, cardAppender }
