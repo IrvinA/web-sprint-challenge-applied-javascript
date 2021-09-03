@@ -49,6 +49,9 @@ const tabsAppender = (selector) => {
     const innerData = data.topics;
     const tab = Tabs(innerData);
     appendPoint.appendChild(tab);
+    tab.addEventListener('click', event => {
+      document.querySelectorAll(`${event.target.innerHTML}`).classList.toggle('active-tab');
+    });
   })
   .catch(err => {
     console.log(err)

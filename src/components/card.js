@@ -41,6 +41,10 @@ const Card = (article) => {
   container.appendChild(authorImg);
   author.appendChild(span);
 
+  card.addEventListener('click', function(event) {
+    console.log(headline);
+  });
+
   return card;
 }
 
@@ -72,22 +76,27 @@ const cardAppender = (selector) => {
 
       javascript.forEach(item => {
         const tab = Card(item);
+        tab.classList.add('javascript');
         appendPoint.appendChild(tab);
       });
       bootstrap.forEach(item => {
         const tab = Card(item);
+        tab.classList.add('bootstrap');
         appendPoint.appendChild(tab);
       });
       technology.forEach(item => {
         const tab = Card(item);
+        tab.classList.add('technology');
         appendPoint.appendChild(tab);
       });
       jquery.forEach(item => {
         const tab = Card(item);
+        tab.classList.add('jquery');
         appendPoint.appendChild(tab);
       });
       node.forEach(item => {
         const tab = Card(item);
+        tab.classList.add('node.js');
         appendPoint.appendChild(tab);
       });
     })
