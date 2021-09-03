@@ -37,11 +37,21 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
   const appendPoint = document.querySelector(`${selector}`);
-  axios.get('http://localhost:5000/api/topics')
+  const axios = require('axios');
+  const config = {
+    method: 'get',
+    url: 'http://localhost:5000/api/topics',
+    headers: { }
+  };
+  axios(config)
   .then(resp => {
-    const data = resp.topics;
-    const tabs = Tabs(data);
-    appendPoint.appendChild(tabs);
+    const data = resp.data;
+    const innerData = data.topics;
+    const tab = Tabs(innerData);
+    appendPoint.appendChild(tab);
+  })
+  .catch(err => {
+    console.log(err)
   })
   return appendPoint;
 }
