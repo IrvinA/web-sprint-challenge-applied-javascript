@@ -39,9 +39,10 @@ const tabsAppender = (selector) => {
   const appendPoint = document.querySelector(`${selector}`);
   axios.get('http://localhost:5000/api/topics')
   .then(resp => {
-    const data = resp['topics'];
-    data.forEach(elem => appendPoint.appendChild(elem));
-  });
+    const data = resp.topics;
+    const tabs = Tabs(data);
+    appendPoint.appendChild(tabs);
+  })
   return appendPoint;
 }
 
