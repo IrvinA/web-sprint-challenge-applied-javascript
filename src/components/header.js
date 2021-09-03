@@ -38,7 +38,7 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   const appendPoint = document.querySelector(`${selector}`);
-  appendPoint.appendChild(Header());
+  appendPoint.appendChild(Header("Runic's Runes", "Sept 3, 2020", "75º"));
   return appendPoint;
 }
 
